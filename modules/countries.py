@@ -273,6 +273,10 @@ class Countries:
     }
 
     @classmethod
+    def get_countries_amount(cls) -> int:
+        return len(cls.__data)
+
+    @classmethod
     def get_country_data(cls,
         iso: str
     ) -> dict:

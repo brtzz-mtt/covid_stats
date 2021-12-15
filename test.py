@@ -85,6 +85,7 @@ def test_main():
         status = '200 OK'
     )
 
+from modules.countries_test import *; test_countries()
 from modules.csv_test import *; test_csv()
 from modules.json_test import *; test_json()
 from modules.polyglot_test import *; test_polyglot()
