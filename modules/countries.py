@@ -45,15 +45,15 @@ class Countries:
             'name': "Cyprus",
             'population': 1_220_059
         },
-        'cze': {
-            'coordinates': {
-                'latitude': 49.8037633,
-                'longitude': 15.4749126
-            },
-            'iso': "cz",
-            'name': "Czech Republic",
-            'population': 10_737_646
-        },
+        #'cze': {
+        #    'coordinates': {
+        #        'latitude': 49.8037633,
+        #        'longitude': 15.4749126
+        #    },
+        #    'iso': "cz",
+        #    'name': "Czech Republic",
+        #    'population': 10_737_646
+        #},
         'deu': {
             'coordinates': {
                 'latitude': 51.1642292,
@@ -260,16 +260,16 @@ class Countries:
             'iso': "se",
             'name': "Sweden",
             'population': 10_190_271
-        },
-        'usa': {
-            'coordinates': {
-                'latitude': 37.6,
-                'longitude': -95.665
-            },
-            'iso': "us",
-            'name': "USA",
-            'population': 333_807_743
-        }
+        }#,
+        #'usa': {
+        #    'coordinates': {
+        #        'latitude': 37.6,
+        #        'longitude': -95.665
+        #    },
+        #    'iso': "us",
+        #    'name': "USA",
+        #    'population': 333_807_743
+        #}
     }
 
     @classmethod

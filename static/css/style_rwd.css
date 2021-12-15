@@ -18,6 +18,10 @@
         overflow: hidden;
         width: 0;
     }
+
+    div.grid {
+        width: 100% !important;
+    }
 }
 
 @media only screen and (max-width: 767px)

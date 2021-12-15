@@ -53,7 +53,7 @@ def process_data_covid_countries_today():
             country = 'Republic of Turkey'
         elif country == 'US':
             country = 'USA'
-        elif country != current_country:
+        if country != current_country:
             current_country = country
             country_filter = available_countries[country]
             confirmed_before, recovered_before, deaths_before = 0, 0, 0
