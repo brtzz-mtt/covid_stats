@@ -12,7 +12,7 @@
         <h1><strong>{{ t("Data for all countries") }}</strong>:</h1>
         {% for key, value in data['country_names']|dictsort(False, 'value') if key != 'all' %}
             <h2><strong>{{ t(data['country_names'][key]) }}</strong>:</h2>
-            {{ country_plot(key) }}
+            <!-- TBD -->
             <br />
         {% endfor %}
     {% endif %}

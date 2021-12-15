@@ -57,10 +57,6 @@
             Cyprus
         </option>
     
-        <option class="cze" value="cze">
-            Česká republika
-        </option>
-    
         <option class="dnk" value="dnk">
             Dánsko
         </option>
@@ -153,10 +149,6 @@
             Spojene kralovstvo
         </option>
     
-        <option class="usa" value="usa">
-            USA
-        </option>
-    
 </select>
 
 <img id="country_flag" src="index.html" alt="" />
@@ -165,7 +157,7 @@
     $(function()
     {
         let country_selector = $('#country_selector')
-            country_name_to_code = {'aut': 'at', 'bel': 'be', 'bgr': 'bg', 'che': 'ch', 'cyp': 'cy', 'cze': 'cz', 'deu': 'de', 'dnk': 'dk', 'esp': 'es', 'est': 'ee', 'fin': 'fi', 'fra': 'fr', 'gbr': 'gb', 'grc': 'gr', 'hrv': 'hr', 'hun': 'hu', 'irl': 'ie', 'ita': 'it', 'ltu': 'lt', 'lux': 'lu', 'lva': 'lv', 'mlt': 'mt', 'nld': 'nl', 'pol': 'pl', 'prt': 'pt', 'rou': 'ro', 'svk': 'sk', 'svn': 'si', 'swe': 'se', 'usa': 'us'};
+            country_name_to_code = {'aut': 'at', 'bel': 'be', 'bgr': 'bg', 'che': 'ch', 'cyp': 'cy', 'deu': 'de', 'dnk': 'dk', 'esp': 'es', 'est': 'ee', 'fin': 'fi', 'fra': 'fr', 'gbr': 'gb', 'grc': 'gr', 'hrv': 'hr', 'hun': 'hu', 'irl': 'ie', 'ita': 'it', 'ltu': 'lt', 'lux': 'lu', 'lva': 'lv', 'mlt': 'mt', 'nld': 'nl', 'pol': 'pl', 'prt': 'pt', 'rou': 'ro', 'svk': 'sk', 'svn': 'si', 'swe': 'se'};
 
         if (country_selector.val() != 'all') {
             $('#country_flag').attr('src', 'https://flagcdn.com/24x18/' + country_name_to_code[country_selector.val()] + '.png')
@@ -282,13 +274,128 @@
     let language_selector = $('#language_selector')
     language_selector.on('change', function(e)
     {
-        window.location.replace('/' + language_selector.val() + '/');
+        window.location.replace('/' + language_selector.val() + '/all/');
     })
 </script>
     </div>
 </div></header>
         <aside></aside>
         <article>
+    
+        <h1><strong>Údaje pre všetky krajiny</strong>:</h1>
+        
+            <h2><strong>Rakúsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Belgicko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Bulharsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Chorvátsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Cyprus</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Dánsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Estónsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Fínsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Francúzsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Nemecko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Grécko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Maďarsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Írsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Taliansko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Lotyšsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Litva</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Luxembursko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Malta</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Holandsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Poľsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Portugalsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Rumunsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Slovensko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Slovinsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Španielsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Švédsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Švajčiarsko</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
+            <h2><strong>Spojene kralovstvo</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
     
 </article>
         <footer><div class="grid">
@@ -338,15 +445,6 @@
                 <a href="../cyp/index.html" title="Cyprus">Cyprus</a>
                 
                     <img class="country_flag" src="https://flagcdn.com/24x18/cy.png" alt="Cyprus" />
-                
-            </li>
-        
-    
-        
-            <li class="cze">
-                <a href="../cze/index.html" title="Česká republika">Česká republika</a>
-                
-                    <img class="country_flag" src="https://flagcdn.com/24x18/cz.png" alt="Česká republika" />
                 
             </li>
         
@@ -558,21 +656,12 @@
             </li>
         
     
-        
-            <li class="usa">
-                <a href="../usa/index.html" title="USA">USA</a>
-                
-                    <img class="country_flag" src="https://flagcdn.com/24x18/us.png" alt="USA" />
-                
-            </li>
-        
-    
 </ul>
         <ul id="languages_list">
     
         
             <li class="da">
-                <a href="../../da/index.html" title="dansk">
+                <a href="../../da/all/index.html" title="dansk">
                     dansk
                 </a>
             </li>
@@ -580,7 +669,7 @@
     
         
             <li class="de">
-                <a href="../../de/index.html" title="deutsch">
+                <a href="../../de/all/index.html" title="deutsch">
                     deutsch
                 </a>
             </li>
@@ -588,7 +677,7 @@
     
         
             <li class="et">
-                <a href="../../et/index.html" title="eesti keel">
+                <a href="../../et/all/index.html" title="eesti keel">
                     eesti keel
                 </a>
             </li>
@@ -596,7 +685,7 @@
     
         
             <li class="en">
-                <a href="../../en/index.html" title="english">
+                <a href="../../en/all/index.html" title="english">
                     english
                 </a>
             </li>
@@ -604,7 +693,7 @@
     
         
             <li class="es">
-                <a href="../../es/index.html" title="español">
+                <a href="../../es/all/index.html" title="español">
                     español
                 </a>
             </li>
@@ -612,7 +701,7 @@
     
         
             <li class="el">
-                <a href="../../el/index.html" title="eλληνικά">
+                <a href="../../el/all/index.html" title="eλληνικά">
                     eλληνικά
                 </a>
             </li>
@@ -620,7 +709,7 @@
     
         
             <li class="fr">
-                <a href="../../fr/index.html" title="français">
+                <a href="../../fr/all/index.html" title="français">
                     français
                 </a>
             </li>
@@ -628,7 +717,7 @@
     
         
             <li class="ga">
-                <a href="../../ga/index.html" title="gaeilge">
+                <a href="../../ga/all/index.html" title="gaeilge">
                     gaeilge
                 </a>
             </li>
@@ -636,7 +725,7 @@
     
         
             <li class="hr">
-                <a href="../../hr/index.html" title="hrvatski">
+                <a href="../../hr/all/index.html" title="hrvatski">
                     hrvatski
                 </a>
             </li>
@@ -644,7 +733,7 @@
     
         
             <li class="it">
-                <a href="../../it/index.html" title="italiano">
+                <a href="../../it/all/index.html" title="italiano">
                     italiano
                 </a>
             </li>
@@ -652,7 +741,7 @@
     
         
             <li class="lv">
-                <a href="../../lv/index.html" title="latviski">
+                <a href="../../lv/all/index.html" title="latviski">
                     latviski
                 </a>
             </li>
@@ -660,7 +749,7 @@
     
         
             <li class="lt">
-                <a href="../../lt/index.html" title="latvių">
+                <a href="../../lt/all/index.html" title="latvių">
                     latvių
                 </a>
             </li>
@@ -668,7 +757,7 @@
     
         
             <li class="hu">
-                <a href="../../hu/index.html" title="magyar">
+                <a href="../../hu/all/index.html" title="magyar">
                     magyar
                 </a>
             </li>
@@ -676,7 +765,7 @@
     
         
             <li class="mt">
-                <a href="../../mt/index.html" title="malti">
+                <a href="../../mt/all/index.html" title="malti">
                     malti
                 </a>
             </li>
@@ -684,7 +773,7 @@
     
         
             <li class="nl">
-                <a href="../../nl/index.html" title="nederlands">
+                <a href="../../nl/all/index.html" title="nederlands">
                     nederlands
                 </a>
             </li>
@@ -692,7 +781,7 @@
     
         
             <li class="pl">
-                <a href="../../pl/index.html" title="polskie">
+                <a href="../../pl/all/index.html" title="polskie">
                     polskie
                 </a>
             </li>
@@ -700,7 +789,7 @@
     
         
             <li class="pt">
-                <a href="../../pt/index.html" title="português">
+                <a href="../../pt/all/index.html" title="português">
                     português
                 </a>
             </li>
@@ -708,7 +797,7 @@
     
         
             <li class="ro">
-                <a href="../../ro/index.html" title="română">
+                <a href="../../ro/all/index.html" title="română">
                     română
                 </a>
             </li>
@@ -718,7 +807,7 @@
     
         
             <li class="sl">
-                <a href="../../sl/index.html" title="slovenščina">
+                <a href="../../sl/all/index.html" title="slovenščina">
                     slovenščina
                 </a>
             </li>
@@ -726,7 +815,7 @@
     
         
             <li class="fi">
-                <a href="../../fi/index.html" title="suomalainen">
+                <a href="../../fi/all/index.html" title="suomalainen">
                     suomalainen
                 </a>
             </li>
@@ -734,7 +823,7 @@
     
         
             <li class="sv">
-                <a href="../../sv/index.html" title="svenska">
+                <a href="../../sv/all/index.html" title="svenska">
                     svenska
                 </a>
             </li>
@@ -742,7 +831,7 @@
     
         
             <li class="cs">
-                <a href="../../cs/index.html" title="čeština">
+                <a href="../../cs/all/index.html" title="čeština">
                     čeština
                 </a>
             </li>
@@ -750,7 +839,7 @@
     
         
             <li class="bg">
-                <a href="../../bg/index.html" title="български">
+                <a href="../../bg/all/index.html" title="български">
                     български
                 </a>
             </li>
