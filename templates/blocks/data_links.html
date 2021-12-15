@@ -1,0 +1,5 @@
+<ul id="links_list">
+    {% for key in data['data_links'] %}
+        <li><a href="{{ data['data_links'][key]['link'] }}" target="_blank" title="{{ data['data_links'][key]['title'] }}">{{ key }}</a></li>
+    {% endfor %}
+</ul>

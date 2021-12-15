@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin-block-end: 1em;
+    margin-block-start: 0;
+}
+
+code {
+    display: block;
+    margin: 1em;
+}
+
+a:hover {
+    opacity: .5;
+}
+
+header nav {
+    float: left;
+}
+
+header #language_selector {
+    float: right;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}

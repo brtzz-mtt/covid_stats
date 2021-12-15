@@ -1,0 +1,13 @@
+<head>
+    {% include 'layout/head_metas.html' %}
+    {% include 'layout/head_fonts.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/grid.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/rwd.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style_rwd.css') }}" />
+    <link rel=icon href="{{ url_for('static', filename = 'favicon.png') }}" sizes="24x24" type="image/png" />
+    <title>{{ title }}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename = 'main.js') }}"></script>
+</head>

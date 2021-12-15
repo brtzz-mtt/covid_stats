@@ -1,0 +1,15 @@
+<select id="language_selector">
+    {% for key in available_languages %}
+        <option class="{{ key }}" value="{{ key }}"{% if key == current_language %} selected{% endif %}>
+            {{ available_languages[key] }}
+        </option>
+    {% endfor %}
+</select>
+
+<script>
+    let language_selector = $('#language_selector')
+    language_selector.on('change', function(e)
+    {
+        window.location.replace('/' + language_selector.val() + '/');
+    })
+</script>

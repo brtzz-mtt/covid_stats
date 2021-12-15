@@ -1,0 +1,6 @@
+@media only screen and (max-width: 767px)
+{
+    div.grid {
+        width: 100% !important;
+    }
+}

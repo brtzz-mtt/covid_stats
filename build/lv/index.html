@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE = edge" />
+<meta name="viewport" content="width = device-width, initial-scale = 1.0">
+<meta name="copyright" content="Copyright © 2021 Bertozzi Matteo" />
+<meta name="description" content="" />
+<meta name="designer" content="FirePython" />
+<meta name="keywords" content="" />
+<meta name="url" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/grid.css" />
+    <link rel="stylesheet" href="../static/css/base.css" />
+    <link rel="stylesheet" href="../static/css/rwd.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/style_rwd.css" />
+    <link rel=icon href="../static/favicon.png" sizes="24x24" type="image/png" />
+    <title>Corona Stats v2021.12.14 | latviski</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../static/main.js"></script>
+</head>
+    <body>
+        <header><div class="grid">
+    <div class="content">
+        <nav><strong>Corona Stats v2021.12.14 | latviski</strong>
+<span class="separator">|</span>
+<a href="../index.html">HOME</a>
+<a href="../readme/index.html">Readme</a>
+<a href="../license/index.html">License</a>
+<span class="separator">|</span>
+<select id="country_selector">
+    
+        <option class="all" value="all" selected>
+            visas valstis
+        </option>
+    
+        <option class="aut" value="aut">
+            Austrija
+        </option>
+    
+        <option class="bel" value="bel">
+            Beļģija
+        </option>
+    
+        <option class="bgr" value="bgr">
+            Bulgārija
+        </option>
+    
+        <option class="hrv" value="hrv">
+            Horvātija
+        </option>
+    
+        <option class="cyp" value="cyp">
+            Kipra
+        </option>
+    
+        <option class="cze" value="cze">
+            Čehu Republika
+        </option>
+    
+        <option class="dnk" value="dnk">
+            Dānija
+        </option>
+    
+        <option class="est" value="est">
+            Igaunija
+        </option>
+    
+        <option class="fin" value="fin">
+            Somija
+        </option>
+    
+        <option class="fra" value="fra">
+            Francija
+        </option>
+    
+        <option class="deu" value="deu">
+            Vācija
+        </option>
+    
+        <option class="grc" value="grc">
+            Grieķija
+        </option>
+    
+        <option class="hun" value="hun">
+            Ungārija
+        </option>
+    
+        <option class="irl" value="irl">
+            Īrija
+        </option>
+    
+        <option class="ita" value="ita">
+            Itālija
+        </option>
+    
+        <option class="lva" value="lva">
+            Latvija
+        </option>
+    
+        <option class="ltu" value="ltu">
+            Lietuva
+        </option>
+    
+        <option class="lux" value="lux">
+            Luksemburga
+        </option>
+    
+        <option class="mlt" value="mlt">
+            Malta
+        </option>
+    
+        <option class="nld" value="nld">
+            Nīderlande
+        </option>
+    
+        <option class="pol" value="pol">
+            Polija
+        </option>
+    
+        <option class="prt" value="prt">
+            Portugāle
+        </option>
+    
+        <option class="rou" value="rou">
+            Rumānija
+        </option>
+    
+        <option class="svk" value="svk">
+            Slovākija
+        </option>
+    
+        <option class="svn" value="svn">
+            Slovēnija
+        </option>
+    
+        <option class="esp" value="esp">
+            Spānija
+        </option>
+    
+        <option class="swe" value="swe">
+            Zviedrija
+        </option>
+    
+        <option class="che" value="che">
+            Šveice
+        </option>
+    
+        <option class="gbr" value="gbr">
+            Apvienotā Karaliste
+        </option>
+    
+        <option class="usa" value="usa">
+            ASV
+        </option>
+    
+</select>
+
+<img id="country_flag" src="index.html" alt="" />
+
+<script>
+    $(function()
+    {
+        let country_selector = $('#country_selector')
+            country_name_to_code = {'aut': 'at', 'bel': 'be', 'bgr': 'bg', 'che': 'ch', 'cyp': 'cy', 'cze': 'cz', 'deu': 'de', 'dnk': 'dk', 'esp': 'es', 'est': 'ee', 'fin': 'fi', 'fra': 'fr', 'gbr': 'gb', 'grc': 'gr', 'hrv': 'hr', 'hun': 'hu', 'irl': 'ie', 'ita': 'it', 'ltu': 'lt', 'lux': 'lu', 'lva': 'lv', 'mlt': 'mt', 'nld': 'nl', 'pol': 'pl', 'prt': 'pt', 'rou': 'ro', 'svk': 'sk', 'svn': 'si', 'swe': 'se', 'usa': 'us'};
+
+        if (country_selector.val() != 'all') {
+            $('#country_flag').attr('src', 'https://flagcdn.com/24x18/' + country_name_to_code[country_selector.val()] + '.png')
+                              .attr('alt', $('#country_selector option:selected').text());
+        }
+
+        country_selector.on('change', function(e)
+        {
+                window.location.replace('/lv/' + country_selector.val() + '/');
+        });
+    })
+</script></nav>
+        <select id="language_selector">
+    
+        <option class="da" value="da">
+            dansk
+        </option>
+    
+        <option class="de" value="de">
+            deutsch
+        </option>
+    
+        <option class="et" value="et">
+            eesti keel
+        </option>
+    
+        <option class="en" value="en">
+            english
+        </option>
+    
+        <option class="es" value="es">
+            español
+        </option>
+    
+        <option class="el" value="el">
+            eλληνικά
+        </option>
+    
+        <option class="fr" value="fr">
+            français
+        </option>
+    
+        <option class="ga" value="ga">
+            gaeilge
+        </option>
+    
+        <option class="hr" value="hr">
+            hrvatski
+        </option>
+    
+        <option class="it" value="it">
+            italiano
+        </option>
+    
+        <option class="lv" value="lv" selected>
+            latviski
+        </option>
+    
+        <option class="lt" value="lt">
+            latvių
+        </option>
+    
+        <option class="hu" value="hu">
+            magyar
+        </option>
+    
+        <option class="mt" value="mt">
+            malti
+        </option>
+    
+        <option class="nl" value="nl">
+            nederlands
+        </option>
+    
+        <option class="pl" value="pl">
+            polskie
+        </option>
+    
+        <option class="pt" value="pt">
+            português
+        </option>
+    
+        <option class="ro" value="ro">
+            română
+        </option>
+    
+        <option class="sk" value="sk">
+            slovenský
+        </option>
+    
+        <option class="sl" value="sl">
+            slovenščina
+        </option>
+    
+        <option class="fi" value="fi">
+            suomalainen
+        </option>
+    
+        <option class="sv" value="sv">
+            svenska
+        </option>
+    
+        <option class="cs" value="cs">
+            čeština
+        </option>
+    
+        <option class="bg" value="bg">
+            български
+        </option>
+    
+</select>
+
+<script>
+    let language_selector = $('#language_selector')
+    language_selector.on('change', function(e)
+    {
+        window.location.replace('/' + language_selector.val() + '/');
+    })
+</script>
+    </div>
+</div></header>
+        <aside></aside>
+        <article>
+    
+</article>
+        <footer><div class="grid">
+    <div class="content">
+        <ul id="countries_list">
+    
+        
+    
+        
+            <li class="aut">
+                <a href="aut/index.html" title="Austrija">Austrija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/at.png" alt="Austrija" />
+                
+            </li>
+        
+    
+        
+            <li class="bel">
+                <a href="bel/index.html" title="Beļģija">Beļģija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/be.png" alt="Beļģija" />
+                
+            </li>
+        
+    
+        
+            <li class="bgr">
+                <a href="bgr/index.html" title="Bulgārija">Bulgārija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/bg.png" alt="Bulgārija" />
+                
+            </li>
+        
+    
+        
+            <li class="hrv">
+                <a href="hrv/index.html" title="Horvātija">Horvātija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/hr.png" alt="Horvātija" />
+                
+            </li>
+        
+    
+        
+            <li class="cyp">
+                <a href="cyp/index.html" title="Kipra">Kipra</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/cy.png" alt="Kipra" />
+                
+            </li>
+        
+    
+        
+            <li class="cze">
+                <a href="cze/index.html" title="Čehu Republika">Čehu Republika</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/cz.png" alt="Čehu Republika" />
+                
+            </li>
+        
+    
+        
+            <li class="dnk">
+                <a href="dnk/index.html" title="Dānija">Dānija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/dk.png" alt="Dānija" />
+                
+            </li>
+        
+    
+        
+            <li class="est">
+                <a href="est/index.html" title="Igaunija">Igaunija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/ee.png" alt="Igaunija" />
+                
+            </li>
+        
+    
+        
+            <li class="fin">
+                <a href="fin/index.html" title="Somija">Somija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/fi.png" alt="Somija" />
+                
+            </li>
+        
+    
+        
+            <li class="fra">
+                <a href="fra/index.html" title="Francija">Francija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/fr.png" alt="Francija" />
+                
+            </li>
+        
+    
+        
+            <li class="deu">
+                <a href="deu/index.html" title="Vācija">Vācija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/de.png" alt="Vācija" />
+                
+            </li>
+        
+    
+        
+            <li class="grc">
+                <a href="grc/index.html" title="Grieķija">Grieķija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/gr.png" alt="Grieķija" />
+                
+            </li>
+        
+    
+        
+            <li class="hun">
+                <a href="hun/index.html" title="Ungārija">Ungārija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/hu.png" alt="Ungārija" />
+                
+            </li>
+        
+    
+        
+            <li class="irl">
+                <a href="irl/index.html" title="Īrija">Īrija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/ie.png" alt="Īrija" />
+                
+            </li>
+        
+    
+        
+            <li class="ita">
+                <a href="ita/index.html" title="Itālija">Itālija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/it.png" alt="Itālija" />
+                
+            </li>
+        
+    
+        
+            <li class="lva">
+                <a href="lva/index.html" title="Latvija">Latvija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/lv.png" alt="Latvija" />
+                
+            </li>
+        
+    
+        
+            <li class="ltu">
+                <a href="ltu/index.html" title="Lietuva">Lietuva</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/lt.png" alt="Lietuva" />
+                
+            </li>
+        
+    
+        
+            <li class="lux">
+                <a href="lux/index.html" title="Luksemburga">Luksemburga</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/lu.png" alt="Luksemburga" />
+                
+            </li>
+        
+    
+        
+            <li class="mlt">
+                <a href="mlt/index.html" title="Malta">Malta</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/mt.png" alt="Malta" />
+                
+            </li>
+        
+    
+        
+            <li class="nld">
+                <a href="nld/index.html" title="Nīderlande">Nīderlande</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/nl.png" alt="Nīderlande" />
+                
+            </li>
+        
+    
+        
+            <li class="pol">
+                <a href="pol/index.html" title="Polija">Polija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/pl.png" alt="Polija" />
+                
+            </li>
+        
+    
+        
+            <li class="prt">
+                <a href="prt/index.html" title="Portugāle">Portugāle</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/pt.png" alt="Portugāle" />
+                
+            </li>
+        
+    
+        
+            <li class="rou">
+                <a href="rou/index.html" title="Rumānija">Rumānija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/ro.png" alt="Rumānija" />
+                
+            </li>
+        
+    
+        
+            <li class="svk">
+                <a href="svk/index.html" title="Slovākija">Slovākija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/sk.png" alt="Slovākija" />
+                
+            </li>
+        
+    
+        
+            <li class="svn">
+                <a href="svn/index.html" title="Slovēnija">Slovēnija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/si.png" alt="Slovēnija" />
+                
+            </li>
+        
+    
+        
+            <li class="esp">
+                <a href="esp/index.html" title="Spānija">Spānija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/es.png" alt="Spānija" />
+                
+            </li>
+        
+    
+        
+            <li class="swe">
+                <a href="swe/index.html" title="Zviedrija">Zviedrija</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/se.png" alt="Zviedrija" />
+                
+            </li>
+        
+    
+        
+            <li class="che">
+                <a href="che/index.html" title="Šveice">Šveice</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/ch.png" alt="Šveice" />
+                
+            </li>
+        
+    
+        
+            <li class="gbr">
+                <a href="gbr/index.html" title="Apvienotā Karaliste">Apvienotā Karaliste</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/gb.png" alt="Apvienotā Karaliste" />
+                
+            </li>
+        
+    
+        
+            <li class="usa">
+                <a href="usa/index.html" title="ASV">ASV</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/us.png" alt="ASV" />
+                
+            </li>
+        
+    
+</ul>
+        <ul id="languages_list">
+    
+        
+            <li class="da">
+                <a href="../da/index.html" title="dansk">
+                    dansk
+                </a>
+            </li>
+        
+    
+        
+            <li class="de">
+                <a href="../de/index.html" title="deutsch">
+                    deutsch
+                </a>
+            </li>
+        
+    
+        
+            <li class="et">
+                <a href="../et/index.html" title="eesti keel">
+                    eesti keel
+                </a>
+            </li>
+        
+    
+        
+            <li class="en">
+                <a href="../en/index.html" title="english">
+                    english
+                </a>
+            </li>
+        
+    
+        
+            <li class="es">
+                <a href="../es/index.html" title="español">
+                    español
+                </a>
+            </li>
+        
+    
+        
+            <li class="el">
+                <a href="../el/index.html" title="eλληνικά">
+                    eλληνικά
+                </a>
+            </li>
+        
+    
+        
+            <li class="fr">
+                <a href="../fr/index.html" title="français">
+                    français
+                </a>
+            </li>
+        
+    
+        
+            <li class="ga">
+                <a href="../ga/index.html" title="gaeilge">
+                    gaeilge
+                </a>
+            </li>
+        
+    
+        
+            <li class="hr">
+                <a href="../hr/index.html" title="hrvatski">
+                    hrvatski
+                </a>
+            </li>
+        
+    
+        
+            <li class="it">
+                <a href="../it/index.html" title="italiano">
+                    italiano
+                </a>
+            </li>
+        
+    
+        
+    
+        
+            <li class="lt">
+                <a href="../lt/index.html" title="latvių">
+                    latvių
+                </a>
+            </li>
+        
+    
+        
+            <li class="hu">
+                <a href="../hu/index.html" title="magyar">
+                    magyar
+                </a>
+            </li>
+        
+    
+        
+            <li class="mt">
+                <a href="../mt/index.html" title="malti">
+                    malti
+                </a>
+            </li>
+        
+    
+        
+            <li class="nl">
+                <a href="../nl/index.html" title="nederlands">
+                    nederlands
+                </a>
+            </li>
+        
+    
+        
+            <li class="pl">
+                <a href="../pl/index.html" title="polskie">
+                    polskie
+                </a>
+            </li>
+        
+    
+        
+            <li class="pt">
+                <a href="../pt/index.html" title="português">
+                    português
+                </a>
+            </li>
+        
+    
+        
+            <li class="ro">
+                <a href="../ro/index.html" title="română">
+                    română
+                </a>
+            </li>
+        
+    
+        
+            <li class="sk">
+                <a href="../sk/index.html" title="slovenský">
+                    slovenský
+                </a>
+            </li>
+        
+    
+        
+            <li class="sl">
+                <a href="../sl/index.html" title="slovenščina">
+                    slovenščina
+                </a>
+            </li>
+        
+    
+        
+            <li class="fi">
+                <a href="../fi/index.html" title="suomalainen">
+                    suomalainen
+                </a>
+            </li>
+        
+    
+        
+            <li class="sv">
+                <a href="../sv/index.html" title="svenska">
+                    svenska
+                </a>
+            </li>
+        
+    
+        
+            <li class="cs">
+                <a href="../cs/index.html" title="čeština">
+                    čeština
+                </a>
+            </li>
+        
+    
+        
+            <li class="bg">
+                <a href="../bg/index.html" title="български">
+                    български
+                </a>
+            </li>
+        
+    
+</ul>
+        <ul id="links_list">
+    
+        <li><a href="https://www.arcgis.com/apps/dashboards/bda7594740fd40299423467b48e9ecf6" target="_blank" title="COVID-19 Dashboard by CSSE @ JHU">CSSE Dashboard</a></li>
+    
+        <li><a href="https://github.com/GoogleCloudPlatform/covid-19-open-data" target="_blank" title="COVID-19 Google Open-Data on GitHub">GCP Open-Data</a></li>
+    
+        <li><a href="https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv" target="_blank" title="GitHub User Content | COVID-19 aggregated countries DATASET">GUC Countries</a></li>
+    
+        <li><a href="https://raw.githubusercontent.com/datasets/covid-19/main/data/worldwide-aggregate.csv" target="_blank" title="GitHub User Content | COVID-19 aggregated worldwide DATASET">GUC Worldwide</a></li>
+    
+        <li><a href="https://www.medalerts.org/" target="_blank" title="National Vaccine Information Center Homepage on MedAlerts">MedAlerts NVIC</a></li>
+    
+        <li><a href="https://openvaers.com/" target="_blank" title="Vaccine Adverse Event Reporting System on HHS available data">OpenVAERS</a></li>
+    
+        <li><a href="https://vaers.hhs.gov/" target="_blank" title="Official HHS Vaccine Adverse Event Reporting System Homepage">HHS VAERS</a></li>
+    
+        <li><a href="https://www.worldometers.info/" target="_blank" title="Worldometers.info">world-o-meter</a></li>
+    
+</ul>
+    </div>
+</div></footer>
+    </body>
+</html>

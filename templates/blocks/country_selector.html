@@ -1,0 +1,27 @@
+<select id="country_selector">
+    {% for key, value in data['country_names']|dictsort(False, 'value') %}
+        <option class="{{ key }}" value="{{ key }}"{% if key == data['current_country'] %} selected{% endif %}>
+            {{ t(value) }}
+        </option>
+    {% endfor %}
+</select>
+
+<img id="country_flag" src="" alt="" />
+
+<script>
+    $(function()
+    {
+        let country_selector = $('#country_selector')
+            country_name_to_code = {{ data['country_isos']|safe }};
+
+        if (country_selector.val() != 'all') {
+            $('#country_flag').attr('src', 'https://flagcdn.com/24x18/' + country_name_to_code[country_selector.val()] + '.png')
+                              .attr('alt', $('#country_selector option:selected').text());
+        }
+
+        country_selector.on('change', function(e)
+        {
+                window.location.replace('/{{ current_language }}/' + country_selector.val() + '/');
+        });
+    })
+</script>

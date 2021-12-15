@@ -1,0 +1,12 @@
+<ul id="countries_list">
+    {% for key, value in data['country_names']|dictsort(False, 'value') %}
+        {% if key != data['current_country'] %}
+            <li class="{{ key }}">
+                <a href="/{{ current_language }}/{{ key }}/" title="{{ t(value) }}">{{ t(value) }}</a>
+                {% if key != 'all' %}
+                    <img class="country_flag" src="https://flagcdn.com/24x18/{{ data['country_isos'][key] }}.png" alt="{{ t(value) }}" />
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

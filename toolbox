@@ -1,0 +1,21 @@
+#!/bin/bash
+
+printf "\n"
+
+if [ $1 = "build" ]; then
+    sh toolbox checkup # executes checkup instructions
+    rm templates/plots/*.html
+    rm -R build/*
+    wget -k -K -E -r -l 10 -p -N -F --restrict-file-names=windows --directory-prefix=build/ -nH http://127.0.0.1:5000/ # exports static website
+elif [ $1 = "checkup" ]; then
+    coverage run -m --source=. pytest test.py -v # runs app tests
+    coverage html --omit="data.py,*test.py" # creates a coverage report under ./htmlcov
+    printf "\n"
+    coverage report -m # prints report's summary to stdout
+    printf "\n"
+    pipreqs --savepath requirements.txt # saves current requirements
+else
+    echo "???"
+fi
+
+printf "\n"
