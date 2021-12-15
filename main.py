@@ -13,9 +13,7 @@ from modules.timestamp import *
 
 from data import generate_plots
 
-country_isos = gm('iso')
 country_names = {**{'all': t("all countries")}, **gm('name')}
-data_links = Json(BASE_PATH + 'data/links.json').get_data()
 
 def flask_template_render(template: str = 'index.html',
     title: str = BASE_TITLE,
@@ -34,10 +32,10 @@ def flask_template_render(template: str = 'index.html',
         },
         data = {**kwargs, **{
             'country_data': gcd(COUNTRY),
-            'country_isos': country_isos,
+            'country_isos': gm('iso'),
             'country_names': country_names,
             'current_country': COUNTRY,
-            'data_links': data_links
+            'data_links': Json(BASE_PATH + 'data/links.json').get_data()
         }},
         available_languages = gels(),
         current_language = gl(),
