@@ -1,0 +1,10 @@
+{% macro country_plot(country) %}
+    <div class="grid width_50">
+        <h2>{{ t("Data for 2020") }}</h2>
+        {% include 'plots/' + country + '_2020.html' %}
+    </div>
+    <div class="grid width_50">
+        <h2>{{ t("Data for 2021") }}</h2>
+        {% include 'plots/' + country + '_2021.html' %}
+    </div>
+{% endmacro %}

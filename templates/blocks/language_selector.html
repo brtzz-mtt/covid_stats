@@ -10,6 +10,6 @@
     let language_selector = $('#language_selector')
     language_selector.on('change', function(e)
     {
-        window.location.replace('/' + language_selector.val() + '/');
+        window.location.replace('/' + language_selector.val() + '/{{ data['current_country'] }}/');
     })
 </script>

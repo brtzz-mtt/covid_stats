@@ -2,7 +2,7 @@
     {% for key in available_languages %}
         {% if key != current_language %}
             <li class="{{ key }}">
-                <a href="/{{ key }}/" title="{{ available_languages[key] }}">
+                <a href="/{{ key }}/{{ data['current_country'] }}/" title="{{ available_languages[key] }}">
                     {{ available_languages[key] }}
                 </a>
             </li>

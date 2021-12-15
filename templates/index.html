@@ -1,14 +1,19 @@
 {% extends 'layout/default.html' %}
 
+{% from "macros/country_plots.html" import country_plot with context %}
+
 {% block article %}
     {% if data['current_country'] != 'all' %}
         <h1>{{ t("Country") }}: <strong>{{ t(data['country_names'][data['current_country']]) }}</strong></h1>
         <p>{{ t("Population") }}: <strong>{{ "{:,}".format(data['country_data']['population']) }}</strong></p>
         <br />
-        <h2>{{ t("Data for 2020") }}</h2>
-        {% include 'plots/' + data['current_country'] + '_2020.html' %}
-        <br />
-        <h2>{{ t("Data for 2021") }}</h2>
-        {% include 'plots/' + data['current_country'] + '_2021.html' %}
+        {{ country_plot(data['current_country']) }}
+    {% else %}
+        <h1><strong>{{ t("Data for all countries") }}</strong>:</h1>
+        {% for key, value in data['country_names']|dictsort(False, 'value') if key != 'all' %}
+            <h2><strong>{{ t(data['country_names'][key]) }}</strong>:</h2>
+            {{ country_plot(key) }}
+            <br />
+        {% endfor %}
     {% endif %}
 {% endblock %}

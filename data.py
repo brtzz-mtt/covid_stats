@@ -60,7 +60,7 @@ def process_data_covid_countries_today():
             data.append(['2020-01-01', country, country_filter, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             country_data = gcd(available_countries[country])
             point = Point(country_data['coordinates']['latitude'], country_data['coordinates']['longitude'], 0)
-            point.radius = 100000
+            point.radius = 1000000
         confirmed = int(data_covid_countries_today[i][2])
         recovered = int(data_covid_countries_today[i][3])
         deaths = int(data_covid_countries_today[i][4])
