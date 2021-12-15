@@ -1,7 +1,7 @@
 Covid Stats
 ===========
 
-TBD
+[![Netlify Status](https://api.netlify.com/api/v1/badges/79cc5eac-276e-495e-98bd-15ed48347e64/deploy-status)](https://csml.netlify.app)
 
 BASH scripts
 ------------
