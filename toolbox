@@ -14,6 +14,16 @@ elif [ $1 = "checkup" ]; then
     coverage report -m # prints report's summary to stdout
     printf "\n"
     pipreqs --savepath requirements.txt # saves current requirements
+elif [ $1 = "push" ]; then
+    gis status
+    git add -a
+    git commit -a
+    git push
+    git checkout master
+    git pull
+    git merge dev
+    git push
+    git checkout dev
 else
     echo "???"
 fi
