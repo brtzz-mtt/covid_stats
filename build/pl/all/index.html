@@ -58,6 +58,10 @@
             Cypr
         </option>
     
+        <option class="cze" value="cze">
+            Republika Czeska
+        </option>
+    
         <option class="dnk" value="dnk">
             Dania
         </option>
@@ -150,6 +154,10 @@
             Zjednoczone Królestwo
         </option>
     
+        <option class="usa" value="usa">
+            USA
+        </option>
+    
 </select>
 
 <img id="country_flag" src="index.html" alt="" />
@@ -158,7 +166,7 @@
     $(function()
     {
         let country_selector = $('#country_selector')
-            country_name_to_code = {'aut': 'at', 'bel': 'be', 'bgr': 'bg', 'che': 'ch', 'cyp': 'cy', 'deu': 'de', 'dnk': 'dk', 'esp': 'es', 'est': 'ee', 'fin': 'fi', 'fra': 'fr', 'gbr': 'gb', 'grc': 'gr', 'hrv': 'hr', 'hun': 'hu', 'irl': 'ie', 'ita': 'it', 'ltu': 'lt', 'lux': 'lu', 'lva': 'lv', 'mlt': 'mt', 'nld': 'nl', 'pol': 'pl', 'prt': 'pt', 'rou': 'ro', 'svk': 'sk', 'svn': 'si', 'swe': 'se'};
+            country_name_to_code = {'aut': 'at', 'bel': 'be', 'bgr': 'bg', 'che': 'ch', 'cyp': 'cy', 'cze': 'cz', 'deu': 'de', 'dnk': 'dk', 'esp': 'es', 'est': 'ee', 'fin': 'fi', 'fra': 'fr', 'gbr': 'gb', 'grc': 'gr', 'hrv': 'hr', 'hun': 'hu', 'irl': 'ie', 'ita': 'it', 'ltu': 'lt', 'lux': 'lu', 'lva': 'lv', 'mlt': 'mt', 'nld': 'nl', 'pol': 'pl', 'prt': 'pt', 'rou': 'ro', 'svk': 'sk', 'svn': 'si', 'swe': 'se', 'usa': 'us'};
 
         if (country_selector.val() != 'all') {
             $('#country_flag').attr('src', 'https://flagcdn.com/24x18/' + country_name_to_code[country_selector.val()] + '.png')
@@ -305,6 +313,10 @@
             <!-- TBD -->
             <br />
         
+            <h2><strong>Republika Czeska</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
             <h2><strong>Dania</strong>:</h2>
             <!-- TBD -->
             <br />
@@ -397,6 +409,10 @@
             <!-- TBD -->
             <br />
         
+            <h2><strong>USA</strong>:</h2>
+            <!-- TBD -->
+            <br />
+        
     
 </article>
         <footer><div class="grid">
@@ -446,6 +462,15 @@
                 <a href="../cyp/index.html" title="Cypr">Cypr</a>
                 
                     <img class="country_flag" src="https://flagcdn.com/24x18/cy.png" alt="Cypr" />
+                
+            </li>
+        
+    
+        
+            <li class="cze">
+                <a href="../cze/index.html" title="Republika Czeska">Republika Czeska</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/cz.png" alt="Republika Czeska" />
                 
             </li>
         
@@ -653,6 +678,15 @@
                 <a href="../gbr/index.html" title="Zjednoczone Królestwo">Zjednoczone Królestwo</a>
                 
                     <img class="country_flag" src="https://flagcdn.com/24x18/gb.png" alt="Zjednoczone Królestwo" />
+                
+            </li>
+        
+    
+        
+            <li class="usa">
+                <a href="../usa/index.html" title="USA">USA</a>
+                
+                    <img class="country_flag" src="https://flagcdn.com/24x18/us.png" alt="USA" />
                 
             </li>
         

@@ -39,9 +39,7 @@ def process_data_covid_countries_today():
     for i in range(1, data_length):
         print(chr(27) + "[2J" + "Preprocessing: " + "{:.2f}".format((i / data_length) * 100) + "%..")
         country = data_covid_countries_today[i][1].replace("*", '')
-        if country not in available_countries:
-            continue # TBD
-        elif country == 'Burma':
+        if country == 'Burma':
             country = "Myanmar"
         elif country == 'Czechia':
             country = 'Czech Republic'
@@ -53,7 +51,9 @@ def process_data_covid_countries_today():
             country = 'Republic of Turkey'
         elif country == 'US':
             country = 'USA'
-        if country != current_country:
+        if country not in available_countries:
+            continue # TBD
+        elif country != current_country:
             current_country = country
             country_filter = available_countries[country]
             confirmed_before, recovered_before, deaths_before = 0, 0, 0
