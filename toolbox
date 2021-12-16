@@ -16,7 +16,7 @@ elif [ $1 = "checkup" ]; then
     pipreqs --savepath requirements.txt # saves current requirements
     pylint modules/ # see https://github.com/PyCQA
 elif [ $1 = "push" ]; then
-    gis status
+    git status
     git add -A
     git commit -a
     git push

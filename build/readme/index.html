@@ -18,18 +18,19 @@
     <link rel="stylesheet" href="../static/css/style.css" />
     <link rel="stylesheet" href="../static/css/style_rwd.css" />
     <link rel=icon href="../static/favicon.png" sizes="24x24" type="image/png" />
-    <title>Covid Stats v2021.12.15 | Readme</title>
+    <title>Covid Stats v2021.12.16 | Readme</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../static/main.js"></script>
 </head>
     <body>
         <header><div class="grid">
     <div class="content">
-        <nav><strong>Covid Stats v2021.12.15 | Readme</strong>
+        <nav><strong>Covid Stats v2021.12.16 | Readme</strong>
 <span class="separator">|</span>
 <a href="../index.html">HOME</a>
 <a href="index.html">Readme</a>
 <a href="../license/index.html">License</a>
+<a href="mailto:brtzz.mtt@protonmail.com">Contact</a>
 <span class="separator">|</span>
 <select id="country_selector">
     
@@ -282,11 +283,19 @@
         <aside></aside>
         <article><h1>Covid Stats</h1>
 <p><a href="https://csml.netlify.app"><img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/79cc5eac-276e-495e-98bd-15ed48347e64/deploy-status" /></a></p>
+<h2>TBDs</h2>
+<ul>
+<li>introduction for readme and indexes</li>
+<li>code-sniffing and static analysis (pylint, sniffer, code-sniffer) on checkup action</li>
+<li>auto-documentation generator</li>
+</ul>
 <h2>BASH scripts</h2>
 <p>Bundled pytests can be run and resulting code-coverage reports saved under ./htmlcov as follows:
 <code>sh toolbox checkup</code></p>
 <p>A static html structure of application can be esported under ./build as follows (includes checkup):
 <code>sh toolbox build</code></p>
+<p>Additionaly, local dev branch (with appropriate privileges) can be merged in master like this:
+<code>sh toolbox push</code></p>
 <hr />
 <p>Copyright © 2021 Bertozzi Matteo</p></article>
         <footer><div class="grid">
