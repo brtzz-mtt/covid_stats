@@ -14,6 +14,7 @@ elif [ $1 = "checkup" ]; then
     coverage report -m # prints report's summary to stdout
     printf "\n"
     pipreqs --savepath requirements.txt # saves current requirements
+    pylint modules/ # see https://github.com/PyCQA
 elif [ $1 = "push" ]; then
     gis status
     git add -A

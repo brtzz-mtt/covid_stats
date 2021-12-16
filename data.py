@@ -141,7 +141,7 @@ def generate_plots(country):
         figure.add_trace(graph_objects.Scatter(
             x = data_frame.date,
             y = data_frame.tavg,
-            name = "avg. °C",
+            name = "avg. temp. °C",
             yaxis = 'y2'
         ))
         figure.update_xaxes(
