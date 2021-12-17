@@ -9,6 +9,8 @@ TBDs
 - introduction for readme and indexes
 - code-sniffing and static analysis (pylint, sniffer, code-sniffer) on checkup action
 - auto-documentation generator
+- 2022 prognosis generator + control group
+- additional illness statistics
 
 BASH scripts
 ------------
