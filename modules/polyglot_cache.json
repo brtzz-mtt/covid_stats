@@ -1274,6 +1274,9 @@
         "sl": "Podatki za leto 2021",
         "sv": "Data för 2021"
     },
+    "Data for 2022": {
+        "it": "Dati per il 2022"
+    },
     "Data for all countries": {
         "bg": "Данни за всички държави",
         "cs": "Údaje pro všechny země",
@@ -3680,6 +3683,9 @@
         "sk": "Portugalsko",
         "sl": "Portugalska",
         "sv": "Portugal"
+    },
+    "Projection 2022": {
+        "it": "Proiezione 2022"
     },
     "Qatar": {
         "bg": "Катар",

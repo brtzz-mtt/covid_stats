@@ -1,7 +1,7 @@
 from conf import *
 
 from meteostat import Daily, Point
-from pandas import date_range, options, read_csv, to_datetime
+from pandas import DataFrame, date_range, options, read_csv, to_datetime
 from plotly import graph_objects
 
 from modules.countries import *
@@ -20,6 +20,7 @@ data_covid_countries_today = Csv(BASE_PATH + 'data/covid_countries_' + today + '
 def process_data_covid_countries_today():
     data = [[
         'date',
+        'datum',
         'country',
         'country_filter',
         'confirmed',
@@ -57,7 +58,7 @@ def process_data_covid_countries_today():
             current_country = country
             country_filter = available_countries[country]
             confirmed_before, recovered_before, deaths_before = 0, 0, 0
-            data.append(['2020-01-01', country, country_filter, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+            data.append(['2020-01-01', '2020-01-01', country, country_filter, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             country_data = gcd(available_countries[country])
             point = Point(country_data['coordinates']['latitude'], country_data['coordinates']['longitude'], 0)
             point.radius = 1000000
@@ -78,6 +79,7 @@ def process_data_covid_countries_today():
             tmin = 0
             tmax = 0
         data.append([
+            data_covid_countries_today[i][0],
             data_covid_countries_today[i][0],
             country,
             country_filter,
@@ -101,7 +103,7 @@ def get_data_frame():
             data = process_data_covid_countries_today()
         )
     data = read_csv(data_csv_path)
-    data['date'] = to_datetime(data['date'], format = '%Y-%m-%d')
+    data.index = to_datetime(data['date'], format = '%Y-%m-%d')
     return data
 
 data = get_data_frame()
@@ -115,20 +117,33 @@ def generate_plots(country):
     max = country_data.confirmed_increment.max()#; print(max)
     max_tavg = country_data.tavg.max()
     min_tavg = country_data.tavg.min()
-    for year in ['2020', '2021']:
+    for year in ['2020', '2021', 'projection_2022', '2022']:
         plot_path = BASE_PATH + 'templates/plots/' + country + '_' + year + '.html'
         if path.exists(plot_path):
             continue
-        start_date = year + '-01-01'
-        end_date = year + '-12-31'
-        data_frame = country_data.loc[(country_data['date'] >= start_date) & (country_data['date'] <= end_date)]
-        data_range = date_range(start = start_date, end = end_date)
-        data_frame.reindex(data_range, fill_value = 0)
+        if 'projection_' in year:
+            data_frame = country_data.groupby([country_data.index.month, country_data.index.day]).mean()
+            year = year[-4:]
+            start_date = year + '-01-01'
+            end_date = year + '-12-31'
+            data_range = date_range(start = start_date, end = end_date)
+            try:
+                data_frame['datum'] = data_range#data_frame.assign(datum = data_range)
+            except ValueError:
+                data_frame.drop((2, 29), axis=0, inplace=True)
+                data_frame['datum'] = data_range
+        else:
+            start_date = year + '-01-01'
+            end_date = year + '-12-31'
+            country_data['datum'] = to_datetime(data['datum'], format = '%Y-%m-%d')
+            data_frame = country_data.loc[(country_data['datum'] >= start_date) & (country_data['datum'] <= end_date)]
+            data_range = date_range(start = start_date, end = end_date)
+            data_frame.reindex(data_range, fill_value = 0)
         figure = data_frame.plot.area( # see https://plotly.com/python-api-reference/generated/plotly.express.area.html
-            x = 'date',
+            x = 'datum',
             y = ['confirmed_increment', 'deaths_increment'],
             labels = {
-                'date': '',
+                'datum': '',
                 'value': '',
                 'variable': ''
             }
@@ -139,7 +154,7 @@ def generate_plots(country):
             hovertemplate = t.hovertemplate.replace(t.name, labels[t.name])
         ))
         figure.add_trace(graph_objects.Scatter(
-            x = data_frame.date,
+            x = data_frame.datum,
             y = data_frame.tavg,
             name = "avg. temp. °C",
             yaxis = 'y2'

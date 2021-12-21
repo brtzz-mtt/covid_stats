@@ -271,6 +271,17 @@ class Countries:
             'population': 333_807_743
         }
     }
+    #__data = { # DBG
+    #    'ita': {
+    #        'coordinates': {
+    #            'latitude': 41.29246,
+    #            'longitude': 12.5736108
+    #        },
+    #        'iso': "it",
+    #        'name': "Italy",
+    #        'population': 60_333_768
+    #    }
+    #}
 
     @classmethod
     def get_countries_amount(cls) -> int:

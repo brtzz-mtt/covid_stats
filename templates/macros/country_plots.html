@@ -7,4 +7,12 @@
         <h2>{{ t("Data for 2021") }}</h2>
         {% include 'plots/' + country + '_2021.html' %}
     </div>
+    <div class="grid width_50">
+        <h2>{{ t("Projection 2022") }}</h2>
+        {% include 'plots/' + country + '_projection_2022.html' %}
+    </div>
+    <div class="grid width_50">
+        <h2>{{ t("Data for 2022") }}</h2>
+        {% include 'plots/' + country + '_2022.html' %}
+    </div>
 {% endmacro %}
