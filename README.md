@@ -6,8 +6,9 @@ Covid Stats
 TBDs
 ----
 
-- auto-documentation generator
+- fix temperature labels and legend
 - additional illness statistics & vaccination rate data
+- auto-documentation generator
 
 BASH scripts
 ------------
