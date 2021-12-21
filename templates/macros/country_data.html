@@ -1,0 +1,4 @@
+{% macro country_data(country) %}
+    <p>{{ t("Population") }}: <strong>{{ "{:,}".format(country['population']) }}</strong></p>
+    <br />
+{% endmacro %}

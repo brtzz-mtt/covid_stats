@@ -131,4 +131,3 @@ dmypy.json
 # project-specific
 *.orig
 /data
-/templates/plots

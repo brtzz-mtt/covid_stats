@@ -104,6 +104,7 @@ def get_data_frame():
         )
     data = read_csv(data_csv_path)
     data.index = to_datetime(data['date'], format = '%Y-%m-%d')
+    data['datum'] = to_datetime(data['datum'], format = '%Y-%m-%d')
     return data
 
 data = get_data_frame()
@@ -135,7 +136,6 @@ def generate_plots(country):
         else:
             start_date = year + '-01-01'
             end_date = year + '-12-31'
-            country_data['datum'] = to_datetime(data['datum'], format = '%Y-%m-%d')
             data_frame = country_data.loc[(country_data['datum'] >= start_date) & (country_data['datum'] <= end_date)]
             data_range = date_range(start = start_date, end = end_date)
             data_frame.reindex(data_range, fill_value = 0)

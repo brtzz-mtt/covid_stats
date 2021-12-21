@@ -39,6 +39,7 @@ def flask_template_render(template: str = 'index.html',
         }},
         available_languages = gels(),
         current_language = gl(),
+        gcd = gcd,
         t = t
     )
 
