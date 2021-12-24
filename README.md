@@ -7,6 +7,8 @@ TBDs
 ----
 
 - fix temperature labels and legend
+- incrementale generation of data/data_[DATUM] csv file
+- add remaining vip countries with more statistics
 - additional illness statistics & vaccination rate data
 - auto-documentation generator
 
