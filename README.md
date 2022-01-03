@@ -17,17 +17,17 @@ BASH scripts
 
 Bundled pytests can be run and resulting code-coverage reports saved under ./htmlcov as follows:
 ```
-sh toolbox checkup
+./toolbox.sh checkup
 ```
 
 A static html structure of application can be esported under ./build as follows (includes checkup):
 ```
-sh toolbox build
+./toolbox.sh build
 ```
 
 Additionaly, local dev branch (with appropriate privileges) can be merged in master like this:
 ```
-sh toolbox push
+./toolbox.sh push
 ```
 
 ---
