@@ -6,11 +6,11 @@ Covid Stats
 TBDs
 ----
 
-- fix temperature labels and legend
+- fix temperature labels, legend and states order
 - incrementale generation of data/data_[DATUM] csv file
 - add remaining vip countries with more statistics
 - additional illness statistics & vaccination rate data
-- auto-documentation generator
+- documentation generator plugins
 
 BASH scripts
 ------------
@@ -32,4 +32,4 @@ Additionaly, local dev branch (with appropriate privileges) can be merged in mas
 
 ---
 
-Copyright © 2021 Bertozzi Matteo
+Copyright © 2021-22 Bertozzi Matteo
