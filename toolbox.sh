@@ -3,7 +3,7 @@
 printf "\n"
 
 if [ $1 = "build" ]; then
-    nohup python3 main.py >> nohup.log 2>&1 &
+    nohup python3 main.py > nohup.log 2>&1 &
     NOHUP_PID=$!
     ./toolbox.sh checkup # executes checkup instructions
     rm templates/plots/*.html
