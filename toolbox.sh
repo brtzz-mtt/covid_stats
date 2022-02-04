@@ -7,7 +7,7 @@ if [ $1 = "build" ]; then
     NOHUP_PID=$!
     ./toolbox.sh checkup # executes checkup instructions
     rm templates/plots/*.html
-    rm -R build/*
+    rm -R build/* 2>/dev/null
     wget -k -K -E -r -l 10 -p -N -F --restrict-file-names=windows --directory-prefix=build/ -nH http://127.0.0.1:5000/ # exports static website
     kill $NOHUP_PID
 elif [ $1 = "checkup" ]; then
