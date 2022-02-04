@@ -13,32 +13,48 @@ options.plotting.backend = "plotly"
 
 today = Timestamp.get_today()
 
-data_covid_countries_today = Csv(BASE_PATH + 'data/covid_countries_' + today + '.csv',
+COUNTRY_CSV_PATH = BASE_PATH + 'data/covid_countries.csv'#_' + today + '.csv'
+DATA_CSV_PATH = BASE_PATH + 'data/data.csv'#_' + today + '.csv'
+
+data_covid_countries_today = Csv(COUNTRY_CSV_PATH,
     url = 'https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv'
 ).get_data()
 
-def process_data_covid_countries_today():
-    data = [[
-        'date',
-        'datum',
-        'country',
-        'country_filter',
-        'confirmed',
-        'confirmed_increment',
-        'recovered',
-        'recovered_increment',
-        'deaths',
-        'deaths_increment',
-        'tavg',
-        'tmin',
-        'tmax'
-    ]]
+def process_data_covid_countries_today(existing_data = None):
+    index = []
+    if not existing_data:
+        data = [[
+            'date',
+            'datum',
+            'country',
+            'country_filter',
+            'confirmed',
+            'confirmed_increment',
+            'recovered',
+            'recovered_increment',
+            'deaths',
+            'deaths_increment',
+            'tavg',
+            'tmin',
+            'tmax'
+        ]]
+    else:
+        for i in range(1, len(existing_data)):
+            index.append(existing_data[i][0] + "_" + existing_data[i][3])
+        data = existing_data
+    #print(index)
+    #return
     available_countries = gm('name', True)
     current_country, country_filter = None, None
     confirmed_before, recovered_before, deaths_before = 0, 0, 0
     data_length = len(data_covid_countries_today)
+    current_status = None
     for i in range(1, data_length):
-        print(chr(27) + "[2J" + "Preprocessing: " + "{:.2f}".format((i / data_length) * 100) + "%..")
+        #print(chr(27) + "[2J" + "Preprocessing: " + "{:.2f}".format((i / data_length) * 100) + "%..")
+        status = "{:.1f}".format((i / data_length) * 100) + "%.."
+        if status != current_status:
+            print("Preprocessing: " + status)
+            current_status = status
         country = data_covid_countries_today[i][1].replace("*", '')
         if country == 'Burma':
             country = "Myanmar"
@@ -58,7 +74,8 @@ def process_data_covid_countries_today():
             current_country = country
             country_filter = available_countries[country]
             confirmed_before, recovered_before, deaths_before = 0, 0, 0
-            data.append(['2020-01-01', '2020-01-01', country, country_filter, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+            if not existing_data:
+                data.append(['2020-01-01', '2020-01-01', country, country_filter, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             country_data = gcd(available_countries[country])
             point = Point(country_data['coordinates']['latitude'], country_data['coordinates']['longitude'], 0)
             point.radius = 1000000
@@ -68,8 +85,14 @@ def process_data_covid_countries_today():
         confirmed_increment = confirmed - confirmed_before
         recovered_increment = recovered - recovered_before
         deaths_increment = deaths - deaths_before
-        daily = Daily(point, datetime.strptime(data_covid_countries_today[i][0] + ' 00:00:00', '%Y-%m-%d %H:%M:%S'), datetime.strptime(data_covid_countries_today[i][0] + ' 23:59:59', '%Y-%m-%d %H:%M:%S'))
-        try:
+        confirmed_before, recovered_before, deaths_before = confirmed, recovered, deaths
+        
+        # checks if line already present and valid, and if not generates it..
+        if data_covid_countries_today[i][0] + "_" + country_filter in index:
+            continue
+
+        try: # because this call generates a bottleneck..
+            daily = Daily(point, datetime.strptime(data_covid_countries_today[i][0] + ' 00:00:00', '%Y-%m-%d %H:%M:%S'), datetime.strptime(data_covid_countries_today[i][0] + ' 23:59:59', '%Y-%m-%d %H:%M:%S'))
             daily_data = daily.fetch().iloc[0]
             tavg = daily_data['tavg']
             tmin = daily_data['tmin']
@@ -93,16 +116,16 @@ def process_data_covid_countries_today():
             tmin,
             tmax
         ])
-        confirmed_before, recovered_before, deaths_before = confirmed, recovered, deaths
+        index.append(country_filter + data_covid_countries_today[i][0])
     return data
 
 def get_data_frame():
-    data_csv_path = BASE_PATH + 'data/data_' + today + '.csv'
-    if not Csv.exists(data_csv_path):
-        Csv(data_csv_path,
-            data = process_data_covid_countries_today()
+    data = Csv(DATA_CSV_PATH).get_data()
+    if not Csv.exists(DATA_CSV_PATH) or True:
+        Csv(DATA_CSV_PATH,
+            data = process_data_covid_countries_today(data)
         )
-    data = read_csv(data_csv_path)
+    data = read_csv(DATA_CSV_PATH)
     data.index = to_datetime(data['date'], format = '%Y-%m-%d')
     data['datum'] = to_datetime(data['datum'], format = '%Y-%m-%d')
     return data
