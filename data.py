@@ -13,7 +13,7 @@ options.plotting.backend = "plotly"
 
 today = Timestamp.get_today()
 
-COUNTRY_CSV_PATH = BASE_PATH + 'data/covid_countries.csv'#_' + today + '.csv'
+COUNTRY_CSV_PATH = BASE_PATH + 'data/covid_countries_' + today + '.csv'
 DATA_CSV_PATH = BASE_PATH + 'data/data.csv'#_' + today + '.csv'
 
 data_covid_countries_today = Csv(COUNTRY_CSV_PATH,
