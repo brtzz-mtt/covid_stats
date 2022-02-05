@@ -23,7 +23,9 @@ class Csv(Timestamp):
             if response.status_code == 200:
                 with open(self.__file_path, 'w') as file:
                     file.write(response.text)
-        with open(self.__file_path) as file:
+        elif not self.exists(self.__file_path):
+            file = open(self.__file_path, 'w')
+        with open(self.__file_path) as file: # creates file if not exists..
             self.set_data(list(reader(file)))
     
     @staticmethod
