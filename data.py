@@ -21,6 +21,14 @@ data_covid_countries_today = Csv(COUNTRY_CSV_PATH,
 ).get_data()
 
 def process_data_covid_countries_today(existing_data = None):
+    """[summary]
+
+    Args:
+        existing_data ([type], optional): [description]. Defaults to None.
+
+    Returns:
+        [type]: [description]
+    """
     index = []
     if not existing_data:
         data = [[
@@ -120,6 +128,11 @@ def process_data_covid_countries_today(existing_data = None):
     return data
 
 def get_data_frame():
+    """[summary]
+
+    Returns:
+        [type]: [description]
+    """
     data = Csv(DATA_CSV_PATH).get_data()
     if not Csv.exists(DATA_CSV_PATH) or True:
         Csv(DATA_CSV_PATH,
@@ -133,6 +146,11 @@ def get_data_frame():
 data = get_data_frame()
 
 def generate_plots(country):
+    """[summary]
+
+    Args:
+        country ([type]): [description]
+    """
     labels = {
         'confirmed_increment': "positives",
         'deaths_increment': "deaths"

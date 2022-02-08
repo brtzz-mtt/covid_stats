@@ -7,10 +7,8 @@ TBDs
 ----
 
 - fix temperature labels, legend and states order
-- incremental generation of data/data_[DATUM] csv file
 - add remaining vip countries with more statistics
 - additional illness statistics & vaccination rate data
-- documentation generator plugins
 
 BASH scripts
 ------------
