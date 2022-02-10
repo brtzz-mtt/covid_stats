@@ -1,0 +1,47 @@
+@media only screen and (max-width: 1024px)
+{
+    body {
+        padding-bottom: 1em;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1023px)
+{
+    header nav .separator {
+        clear: both;
+        display: block;
+        height: 5px;
+        overflow: hidden;
+        width: 0;
+    }
+
+    div.grid {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    body {
+        background-position: -106px top;
+        padding-left: 1em;
+    }
+
+    header {
+        width: calc(100% - 2em);
+    }
+
+    header nav strong {
+        font-size: small;
+    }
+
+    header #language_selector {
+        position: absolute;
+        right: 0;
+        width: 18px;
+    }
+}

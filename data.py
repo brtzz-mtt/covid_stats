@@ -1,8 +1,10 @@
 from conf import *
 
 from meteostat import Daily, Point
+from os import mkdir
 from pandas import DataFrame, date_range, options, read_csv, to_datetime
 from plotly import graph_objects
+from sys import exit
 
 from modules.countries import *
 from modules.csv import *
@@ -159,8 +161,12 @@ def generate_plots(country):
     max = country_data.confirmed_increment.max()#; print(max)
     max_tavg = country_data.tavg.max()
     min_tavg = country_data.tavg.min()
+    PLOTS_DIR = 'templates/plots/'
+    if not path.exists(BASE_PATH + PLOTS_DIR):
+        mkdir(BASE_PATH + PLOTS_DIR)
+    #exit(BASE_PATH + PLOTS_DIR)
     for year in ['2020', '2021', 'projection_2022', '2022']:
-        plot_path = BASE_PATH + 'templates/plots/' + country + '_' + year + '.html'
+        plot_path = BASE_PATH + PLOTS_DIR + country + '_' + year + '.html'
         if path.exists(plot_path):
             continue
         if 'projection_' in year:
