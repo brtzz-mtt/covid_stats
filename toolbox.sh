@@ -21,7 +21,7 @@ elif [ $1 = "checkup" ]; then
 elif [ $1 = "push" ]; then
     git status
     git add -A
-    git commit -a
+    git commit -a -m "build @ $(date +"%d\/%m\/%Y")"
     git push
     git checkout master
     git pull
