@@ -1,8 +1,8 @@
 Flask==2.0.2
 Jinja2==3.0.1
 plotly==5.4.0
-Markdown==3.3.6
 meteostat==1.5.10
 requests==2.18.4
-pandas==1.1.5
+Markdown==3.3.6
 googletrans==3.1.0a0
+pandas==1.1.5
